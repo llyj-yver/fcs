@@ -1,65 +1,254 @@
+"use client";
+
+import { useState } from "react";
+import { 
+  ChevronLeft, 
+  ChevronRight, 
+  PlayCircle, 
+  CheckCircle2, 
+  Clock,
+  BookOpen,
+  Award
+} from "lucide-react";
 import Image from "next/image";
 
-export default function Home() {
+const images = [
+  "/image/classification_cover.png",
+  "/salads/salad2.jpg",
+  "/salads/salad3.jpg",
+];
+
+export default function HomePage() {
+  const [current, setCurrent] = useState(0);
+  const [showPopup, setShowPopup] = useState(false);
+
+  const nextSlide = () => setCurrent((prev) => (prev + 1) % images.length);
+  const prevSlide = () => setCurrent((prev) => (prev - 1 + images.length) % images.length);
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <div className="min-h-screen bg-gradient-to-br from-green-50 via-emerald-50 to-lime-50">
+      {/* Hero Section */}
+      <div className="bg-gradient-to-br from-green-900 via-emerald-900 to-green-800 text-white relative overflow-hidden">
+        {/* Decorative Elements */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-20 left-10 w-72 h-72 bg-lime-400 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-emerald-400 rounded-full blur-3xl"></div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        <div className="max-w-7xl mx-auto px-4 py-20 md:py-28 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            {/* Left Content */}
+            <div className="space-y-8">
+              <h1 className="text-5xl md:text-7xl font-extrabold leading-tight">
+                <span className="bg-gradient-to-r from-lime-300 via-green-300 to-emerald-300 bg-clip-text text-transparent">
+                  Salad & Dressing
+                </span>
+                <br />
+                <span className="text-white">Mastery</span>
+              </h1>
+              
+              <p className="text-xl md:text-2xl text-emerald-100 leading-relaxed">
+                Transform fresh ingredients into culinary art with professional techniques and creative presentations
+              </p>
+
+              {/* Stats */}
+              <div className="flex flex-wrap items-center gap-4">
+                <div className="flex items-center gap-2 text-white bg-white/10 backdrop-blur-md px-5 py-3 rounded-full border border-white/20">
+                  <Award className="w-5 h-5 text-lime-300" />
+                  <span className="font-semibold">Beginner Friendly</span>
+                </div>
+                <div className="flex items-center gap-2 text-white bg-white/10 backdrop-blur-md px-5 py-3 rounded-full border border-white/20">
+                  <CheckCircle2 className="w-5 h-5 text-emerald-300" />
+                  <span className="font-semibold">2025 Edition</span>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-4 text-sm">
+                <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 px-5 py-3 rounded-xl">
+                  <Clock className="w-5 h-5 text-lime-300" />
+                  <span className="font-semibold text-white">2 hours</span>
+                </div>
+                <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 px-5 py-3 rounded-xl">
+                  <BookOpen className="w-5 h-5 text-emerald-300" />
+                  <span className="font-semibold text-white">4 modules</span>
+                </div>
+              </div>
+
+              <button
+                onClick={() => setShowPopup(true)}
+                className="group flex items-center gap-3 px-8 py-5 bg-gradient-to-r from-lime-400 via-green-400 to-emerald-400 text-green-900 text-lg font-bold rounded-2xl hover:shadow-2xl hover:shadow-lime-500/30 transition-all hover:scale-105 hover:-translate-y-1"
+              >
+                <PlayCircle className="w-7 h-7 group-hover:scale-110 transition-transform" />
+                Start Learning Now
+              </button>
+            </div>
+
+            {/* Right - Image Carousel */}
+            <div className="relative group">
+              <div className="overflow-hidden rounded-3xl shadow-2xl border-2 border-white/20 backdrop-blur-sm bg-white/5">
+                <div className="relative h-[400px] md:h-[500px] bg-gradient-to-br from-lime-100 via-green-50 to-emerald-100 flex items-center justify-center">
+                  <div className="text-center p-8">
+                    <div className="w-40 h-40 mx-auto mb-8 bg-gradient-to-br from-green-500 to-emerald-600 rounded-3xl flex items-center justify-center shadow-2xl shadow-green-500/40 rotate-3 hover:rotate-0 transition-transform">
+                      <BookOpen className="w-20 h-20 text-white" />
+                    </div>
+                    <p className="text-4xl font-extrabold text-green-900 mb-3">Course Preview</p>
+                    <p className="text-xl text-green-700 font-medium">Professional Salad Techniques</p>
+                  </div>
+                  
+                  {/* Image Counter */}
+                  <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-3 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg">
+                    {images.map((_, idx) => (
+                      <button
+                        key={idx}
+                        onClick={() => setCurrent(idx)}
+                        className={`h-2.5 rounded-full transition-all ${
+                          idx === current 
+                            ? "bg-gradient-to-r from-lime-500 to-green-600 w-10" 
+                            : "bg-green-200 hover:bg-green-300 w-2.5"
+                        }`}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Navigation Buttons */}
+              <button
+                onClick={prevSlide}
+                className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-sm p-4 rounded-full shadow-xl hover:bg-white transition-all hover:scale-110 border border-green-100"
+              >
+                <ChevronLeft className="w-6 h-6 text-green-700" />
+              </button>
+
+              <button
+                onClick={nextSlide}
+                className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/90 backdrop-blur-sm p-4 rounded-full shadow-xl hover:bg-white transition-all hover:scale-110 border border-green-100"
+              >
+                <ChevronRight className="w-6 h-6 text-green-700" />
+              </button>
+            </div>
+          </div>
         </div>
-      </main>
+      </div>
+
+      {/* What You'll Learn Section */}
+      <div className="max-w-7xl mx-auto px-4 py-20">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-green-700 via-emerald-600 to-lime-600 bg-clip-text text-transparent mb-4">
+            What You'll Master
+          </h2>
+          <p className="text-xl text-green-700">Comprehensive skills for professional salad preparation</p>
+        </div>
+        
+        <div className="grid md:grid-cols-2 gap-6 mb-16">
+          {[
+            "Understand different types of salads and their origins",
+            "Learn proper food preparation and cutting techniques",
+            "Practice safe food handling and hygiene standards",
+            "Create visually appealing salad presentations"
+          ].map((item, idx) => (
+            <div key={idx} className="flex items-start gap-4 bg-white p-6 rounded-2xl border-2 border-green-100 hover:border-green-300 hover:shadow-lg transition-all">
+              <div className="w-8 h-8 rounded-full bg-gradient-to-br from-lime-400 to-green-500 flex items-center justify-center flex-shrink-0">
+                <CheckCircle2 className="w-5 h-5 text-white" />
+              </div>
+              <span className="text-green-900 font-medium text-lg">{item}</span>
+            </div>
+          ))}
+        </div>
+
+        {/* Course Highlights */}
+        <div className="grid md:grid-cols-3 gap-8">
+          <div className="group bg-gradient-to-br from-white to-green-50 p-8 rounded-3xl border-2 border-green-100 hover:border-green-300 hover:shadow-2xl transition-all hover:-translate-y-2">
+            <div className="w-16 h-16 bg-gradient-to-br from-lime-400 to-green-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg">
+              <BookOpen className="w-8 h-8 text-white" />
+            </div>
+            <h3 className="text-2xl font-bold text-green-900 mb-3">Structured Learning</h3>
+            <p className="text-green-700 leading-relaxed">Follow a step-by-step curriculum from basics to advanced techniques</p>
+          </div>
+
+          <div className="group bg-gradient-to-br from-white to-purple-50 p-8 rounded-3xl border-2 border-purple-100 hover:border-purple-300 hover:shadow-2xl transition-all hover:-translate-y-2">
+            <div className="w-16 h-16 bg-gradient-to-br from-purple-400 to-pink-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg">
+              <Award className="w-8 h-8 text-white" />
+            </div>
+            <h3 className="text-2xl font-bold text-purple-900 mb-3">Certificate</h3>
+            <p className="text-purple-700 leading-relaxed">Earn a certificate upon completion to showcase your skills</p>
+          </div>
+
+          <div className="group bg-gradient-to-br from-white to-blue-50 p-8 rounded-3xl border-2 border-blue-100 hover:border-blue-300 hover:shadow-2xl transition-all hover:-translate-y-2">
+            <div className="w-16 h-16 bg-gradient-to-br from-blue-400 to-cyan-500 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform shadow-lg">
+              <Clock className="w-8 h-8 text-white" />
+            </div>
+            <h3 className="text-2xl font-bold text-blue-900 mb-3">Self-Paced</h3>
+            <p className="text-blue-700 leading-relaxed">Learn at your own pace with lifetime access to materials</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Popup Modal */}
+      {showPopup && (
+        <div className="fixed inset-0 bg-green-900/40 backdrop-blur-md flex items-center justify-center z-50 p-4 animate-in fade-in duration-200">
+          <div className="bg-white rounded-3xl p-10 max-w-2xl w-full shadow-2xl border-2 border-green-100 animate-in zoom-in-95 duration-300">
+            {/* Header */}
+            <div className="mb-8">
+              <div className="inline-block mb-4">
+                <span className="px-4 py-2 bg-gradient-to-r from-lime-100 to-green-100 text-green-700 rounded-full text-sm font-bold border-2 border-green-200">
+                  🎓 Course Enrollment
+                </span>
+              </div>
+              <h2 className="text-4xl font-extrabold bg-gradient-to-r from-green-700 via-emerald-600 to-lime-600 bg-clip-text text-transparent mb-3">
+                Ready to Start Learning?
+              </h2>
+              <p className="text-green-700 text-lg">
+                Everything you need to become a salad preparation expert
+              </p>
+            </div>
+
+            {/* Description */}
+            <p className="text-green-800 mb-8 leading-relaxed text-lg">
+              This comprehensive course will guide you through the fundamentals of salad
+              preparation, ingredients, hygiene, and presentation techniques used by professionals.
+            </p>
+
+            {/* Feature List */}
+            <div className="bg-gradient-to-br from-green-50 to-lime-50 rounded-2xl p-8 mb-8 border-2 border-green-100">
+              <h3 className="font-bold text-green-900 mb-6 text-xl">Course includes:</h3>
+              <div className="space-y-4">
+                {[
+                  "4 comprehensive modules",
+                  "2 hours of content",
+                  "Practical demonstrations",
+                  "Final assessment quiz",
+                  "Certificate of completion"
+                ].map((item, idx) => (
+                  <div key={idx} className="flex items-center gap-4">
+                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-lime-400 to-green-500 flex items-center justify-center flex-shrink-0 shadow-md">
+                      <CheckCircle2 className="w-5 h-5 text-white" />
+                    </div>
+                    <span className="text-green-800 font-medium text-lg">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Action Buttons */}
+            <div className="flex flex-col sm:flex-row gap-4">
+              <button
+                onClick={() => setShowPopup(false)}
+                className="flex-1 px-8 py-4 rounded-2xl border-2 border-green-200 font-bold text-green-700 hover:bg-green-50 transition-all hover:border-green-300"
+              >
+                Maybe Later
+              </button>
+
+              <button
+                onClick={() => window.location.href = "/navigation"}
+                className="flex-1 px-8 py-4 rounded-2xl bg-gradient-to-r from-lime-400 via-green-400 to-emerald-400 text-green-900 font-bold hover:shadow-xl hover:shadow-green-500/30 transition-all hover:scale-105"
+              >
+                Continue to Course →
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
