@@ -269,20 +269,20 @@ export default function Module1() {
   const prevSlide = () => setCurrent((prev) => (prev - 1 + salads.length) % salads.length);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white p-6">
+    <div className="min-h-screen bg-gradient-to-br from-green-50 via-lime-50 to-emerald-50 text-gray-800 p-6">
       {/* Top Navigation Bar */}
       <div className="max-w-7xl mx-auto mb-6">
         <div className="flex items-center justify-between">
           <button
             onClick={() => window.location.href = "/navigation"}
-            className="text-gray-300 hover:text-white transition-colors"
+            className="text-green-700 hover:text-green-900 transition-colors"
           >
             <div className="flex items-center gap-2">
               <Home className="w-4 h-4" />
               <span className="text-sm">Home › Module 1</span>
             </div>
           </button>
-          <div className="text-sm text-gray-400">
+          <div className="text-sm text-gray-600">
             {current + 1} / {salads.length}
           </div>
         </div>
@@ -293,9 +293,9 @@ export default function Module1() {
         {/* Left Section - Main Content */}
         <div className="lg:col-span-2 space-y-6">
           {/* Module Title */}
-          <div className="bg-gradient-to-r from-emerald-600 to-teal-600 rounded-lg p-6 shadow-lg">
-            <h1 className="text-3xl font-bold mb-2">Classification of Salad</h1>
-            <div className="flex items-center gap-4 text-sm text-emerald-100">
+          <div className="bg-gradient-to-r from-lime-500 to-green-600 rounded-lg p-6 shadow-lg">
+            <h1 className="text-3xl font-bold mb-2 text-white">Classification of Salad</h1>
+            <div className="flex items-center gap-4 text-sm text-green-100">
               <span className="flex items-center gap-1">
                 <BookOpen className="w-4 h-4" />
                 Module 1
@@ -307,14 +307,15 @@ export default function Module1() {
           </div>
 
           {/* Video/Content Player Area */}
-          <div className="bg-gray-800 rounded-lg overflow-hidden shadow-lg">
+          <div className="bg-white rounded-lg overflow-hidden shadow-lg border border-green-200">
             <div className="aspect-video relative overflow-hidden rounded-lg">
               {/* Background Image */}
               <Image
+                key={salads[current].image}
                 src={salads[current].image}
                 alt={salads[current].type}
                 fill
-                priority
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 66vw, 50vw"
                 className="object-cover scale-105"
               />
 
@@ -335,17 +336,17 @@ export default function Module1() {
               </div>
             </div>
             {/* Navigation Buttons */}
-            <div className="bg-gray-900 p-4 flex items-center justify-between">
+            <div className="bg-gradient-to-r from-green-100 to-lime-100 p-4 flex items-center justify-between">
               <button
                 onClick={prevSlide}
-                className="flex items-center gap-2 px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors"
+                className="flex items-center gap-2 px-4 py-2 bg-white hover:bg-green-50 text-green-700 rounded-lg transition-colors shadow-sm border border-green-300"
               >
                 <ChevronLeft className="w-5 h-5" />
                 Previous
               </button>
               <button
                 onClick={nextSlide}
-                className="flex items-center gap-2 px-4 py-2 bg-emerald-600 hover:bg-emerald-700 rounded-lg transition-colors"
+                className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-lime-500 to-green-600 hover:from-lime-600 hover:to-green-700 text-white rounded-lg transition-colors shadow-md"
               >
                 Next
                 <ChevronRight className="w-5 h-5" />
@@ -353,10 +354,10 @@ export default function Module1() {
             </div>
 
             {/* Progress Bar */}
-            <div className="bg-gray-900 px-4 pb-4">
-              <div className="w-full bg-gray-700 rounded-full h-2">
+            <div className="bg-gradient-to-r from-green-100 to-lime-100 px-4 pb-4">
+              <div className="w-full bg-green-200 rounded-full h-2">
                 <div
-                  className="bg-emerald-500 h-2 rounded-full transition-all duration-300"
+                  className="bg-gradient-to-r from-lime-500 to-green-600 h-2 rounded-full transition-all duration-300"
                   style={{ width: `${((current + 1) / salads.length) * 100}%` }}
                 />
               </div>
@@ -366,16 +367,16 @@ export default function Module1() {
           {/* Completion Card */}
           {showCompletion && current === salads.length - 1 && (
             <div className={`rounded-lg p-6 shadow-lg border-2 ${isModuleCompleted
-              ? 'bg-gradient-to-br from-green-900 to-emerald-900 border-emerald-500'
-              : 'bg-gradient-to-br from-blue-900 to-purple-900 border-blue-500'
+              ? 'bg-gradient-to-br from-green-50 to-emerald-50 border-green-400'
+              : 'bg-gradient-to-br from-lime-50 to-green-50 border-lime-400'
               }`}>
               <div className="flex items-start gap-4">
                 <div className="text-5xl">{isModuleCompleted ? '✅' : '🎉'}</div>
                 <div className="flex-1">
-                  <h3 className="text-2xl font-bold mb-2 text-white">
+                  <h3 className="text-2xl font-bold mb-2 text-gray-800">
                     {isModuleCompleted ? 'Module Completed!' : 'Congratulations!'}
                   </h3>
-                  <p className={`mb-4 ${isModuleCompleted ? 'text-emerald-200' : 'text-blue-200'}`}>
+                  <p className={`mb-4 ${isModuleCompleted ? 'text-green-700' : 'text-lime-700'}`}>
                     {isModuleCompleted
                       ? "You've already completed Module 1: Classification of Salad. Great job!"
                       : "You've completed all lessons in Module 1: Classification of Salad. This module has been automatically marked as complete!"}
@@ -383,7 +384,7 @@ export default function Module1() {
                   <div className="flex gap-3">
                     <button
                       onClick={() => window.location.href = "/navigation"}
-                      className="px-6 py-3 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors flex items-center gap-2"
+                      className="px-6 py-3 bg-gradient-to-r from-lime-500 to-green-600 text-white rounded-lg hover:from-lime-600 hover:to-green-700 transition-colors flex items-center gap-2 shadow-md"
                     >
                       <Home className="w-5 h-5" />
                       Back to Navigation
@@ -391,7 +392,7 @@ export default function Module1() {
                     {isModuleCompleted && (
                       <button
                         onClick={() => setCurrent(0)}
-                        className="px-6 py-3 bg-gray-700 text-white rounded-lg hover:bg-gray-600 transition-colors"
+                        className="px-6 py-3 bg-white text-green-700 rounded-lg hover:bg-green-50 transition-colors border border-green-300"
                       >
                         Review Lessons
                       </button>
@@ -403,14 +404,14 @@ export default function Module1() {
           )}
 
           {/* Interactive Flashcard */}
-          <div className="bg-gray-800 rounded-lg p-6 shadow-lg">
+          <div className="bg-white rounded-lg p-6 shadow-lg border border-green-200">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="text-xl font-bold text-emerald-400 flex items-center gap-2">
+              <h3 className="text-xl font-bold text-green-700 flex items-center gap-2">
                 🎴 Knowledge Check
               </h3>
               <button
                 onClick={() => setIsFlipped(false)}
-                className="text-sm text-gray-400 hover:text-white transition-colors flex items-center gap-1"
+                className="text-sm text-gray-600 hover:text-green-700 transition-colors flex items-center gap-1"
               >
                 <RotateCcw className="w-4 h-4" />
                 Reset
@@ -430,7 +431,7 @@ export default function Module1() {
                 }}
               >
                 <div
-                  className={`bg-gradient-to-br from-purple-600 to-blue-600 rounded-xl p-8 min-h-[200px] flex items-center justify-center text-center ${isFlipped ? 'invisible' : 'visible'}`}
+                  className={`bg-gradient-to-br from-lime-400 to-green-500 rounded-xl p-8 min-h-[200px] flex items-center justify-center text-center ${isFlipped ? 'invisible' : 'visible'}`}
                   style={{
                     backfaceVisibility: 'hidden',
                     WebkitBackfaceVisibility: 'hidden'
@@ -441,12 +442,12 @@ export default function Module1() {
                     <p className="text-xl font-semibold text-white">
                       {salads[current].flashcard.front}
                     </p>
-                    <p className="text-sm text-purple-200 mt-4">Click to reveal answer</p>
+                    <p className="text-sm text-green-100 mt-4">Click to reveal answer</p>
                   </div>
                 </div>
 
                 <div
-                  className={`bg-gradient-to-br from-emerald-600 to-teal-600 rounded-xl p-8 min-h-[200px] flex items-center justify-center text-center absolute top-0 left-0 w-full ${!isFlipped ? 'invisible' : 'visible'}`}
+                  className={`bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl p-8 min-h-[200px] flex items-center justify-center text-center absolute top-0 left-0 w-full ${!isFlipped ? 'invisible' : 'visible'}`}
                   style={{
                     backfaceVisibility: 'hidden',
                     WebkitBackfaceVisibility: 'hidden',
@@ -458,7 +459,7 @@ export default function Module1() {
                     <p className="text-lg text-white leading-relaxed">
                       {salads[current].flashcard.back}
                     </p>
-                    <p className="text-sm text-emerald-200 mt-4">Click to see question</p>
+                    <p className="text-sm text-green-100 mt-4">Click to see question</p>
                   </div>
                 </div>
               </div>
@@ -466,12 +467,12 @@ export default function Module1() {
 
             {/* Key Points */}
             <div className="mt-6">
-              <h4 className="font-semibold text-gray-300 mb-3">Key Points:</h4>
+              <h4 className="font-semibold text-gray-700 mb-3">Key Points:</h4>
               <div className="grid grid-cols-2 gap-2">
                 {salads[current].keyPoints.map((point, idx) => (
-                  <div key={idx} className="bg-gray-700 rounded-lg px-3 py-2 text-sm flex items-center gap-2">
-                    <span className="text-emerald-400">•</span>
-                    <span>{point}</span>
+                  <div key={idx} className="bg-green-50 border border-green-200 rounded-lg px-3 py-2 text-sm flex items-center gap-2">
+                    <span className="text-green-600">•</span>
+                    <span className="text-gray-700">{point}</span>
                   </div>
                 ))}
               </div>
@@ -482,17 +483,17 @@ export default function Module1() {
         {/* Right Section - Sidebar */}
         <div className="space-y-6">
           {/* Lecture Notes */}
-          <div className="bg-gray-800 rounded-lg p-6">
+          <div className="bg-white rounded-lg p-6 border border-green-200 shadow-lg">
             <div className="flex items-center justify-between mb-4">
-              <div className="flex items-center gap-2 text-emerald-400">
+              <div className="flex items-center gap-2 text-green-700">
                 <BookOpen className="w-5 h-5" />
                 <h3 className="font-semibold">Lecture Notes</h3>
               </div>
               <div className="flex items-center gap-2">
                 <button
                   onClick={toggleAutoSpeak}
-                  className={`p-2 rounded-lg transition-colors ${autoSpeak ? "bg-emerald-600 text-white" : "bg-gray-700 text-gray-400"
-                    } hover:bg-emerald-500`}
+                  className={`p-2 rounded-lg transition-colors ${autoSpeak ? "bg-gradient-to-r from-lime-500 to-green-600 text-white" : "bg-green-100 text-green-700"
+                    } hover:bg-green-500`}
                   title={autoSpeak ? "Auto-speak enabled" : "Auto-speak disabled"}
                 >
                   {autoSpeak ? <Volume2 className="w-5 h-5" /> : <VolumeX className="w-5 h-5" />}
@@ -500,7 +501,7 @@ export default function Module1() {
                 {isSpeaking && (
                   <button
                     onClick={stopSpeaking}
-                    className="px-3 py-2 bg-red-600 text-white text-sm rounded-lg hover:bg-red-700 transition-colors"
+                    className="px-3 py-2 bg-red-500 text-white text-sm rounded-lg hover:bg-red-600 transition-colors shadow-sm"
                   >
                     Stop
                   </button>
@@ -510,8 +511,8 @@ export default function Module1() {
 
             <div className="mb-4">
               <div className="flex items-center justify-between mb-2">
-                <label className="text-sm text-gray-400">Speech Speed</label>
-                <span className="text-sm text-emerald-400">{speechRate.toFixed(1)}x</span>
+                <label className="text-sm text-gray-600">Speech Speed</label>
+                <span className="text-sm text-green-700">{speechRate.toFixed(1)}x</span>
               </div>
               <input
                 type="range"
@@ -520,7 +521,7 @@ export default function Module1() {
                 step="0.1"
                 value={speechRate}
                 onChange={(e) => setSpeechRate(parseFloat(e.target.value))}
-                className="w-full h-2 bg-gray-700 rounded-lg appearance-none cursor-pointer accent-emerald-500"
+                className="w-full h-2 bg-green-200 rounded-lg appearance-none cursor-pointer accent-green-600"
               />
               <div className="flex justify-between text-xs text-gray-500 mt-1">
                 <span>0.5x (Slow)</span>
@@ -529,31 +530,31 @@ export default function Module1() {
               </div>
             </div>
 
-            <p className="text-gray-300 leading-relaxed">{salads[current].lectureNote}</p>
+            <p className="text-gray-700 leading-relaxed">{salads[current].lectureNote}</p>
             <div className="mt-4 text-sm text-gray-500">
               Lesson {current + 1} of {salads.length}
             </div>
           </div>
 
           {/* Professor Card */}
-          <div className="bg-gray-800 rounded-lg p-6">
+          <div className="bg-white rounded-lg p-6 border border-green-200 shadow-lg">
             <div className="flex items-center gap-4">
               <div className="text-5xl">👨‍🏫</div>
               <div>
-                <h3 className="font-semibold text-lg">Professor Garcia</h3>
-                <p className="text-sm text-gray-400">Culinary Instructor</p>
+                <h3 className="font-semibold text-lg text-gray-800">Professor Garcia</h3>
+                <p className="text-sm text-gray-600">Culinary Instructor</p>
               </div>
             </div>
           </div>
 
           {/* Navigation Dots */}
-          <div className="bg-gray-800 rounded-lg p-6">
+          <div className="bg-white rounded-lg p-6 border border-green-200 shadow-lg">
             <div className="flex gap-2 justify-center">
               {salads.map((_, idx) => (
                 <button
                   key={idx}
                   onClick={() => setCurrent(idx)}
-                  className={`h-2 rounded-full transition-all ${idx === current ? "bg-emerald-500 w-8" : "bg-gray-700 hover:bg-gray-600 w-2"
+                  className={`h-2 rounded-full transition-all ${idx === current ? "bg-gradient-to-r from-lime-500 to-green-600 w-8" : "bg-green-200 hover:bg-green-300 w-2"
                     }`}
                 />
               ))}
@@ -561,8 +562,8 @@ export default function Module1() {
           </div>
 
           {/* Example Salads Cards */}
-          <div className="bg-gray-800 rounded-lg p-6">
-            <h4 className="font-semibold text-emerald-400 mb-4 flex items-center gap-2">
+          <div className="bg-white rounded-lg p-6 border border-green-200 shadow-lg">
+            <h4 className="font-semibold text-green-700 mb-4 flex items-center gap-2">
               <span className="text-lg">🍽️</span>
               Examples
             </h4>
@@ -570,23 +571,22 @@ export default function Module1() {
               {salads[current].examples.map((example, idx) => (
                 <div
                   key={idx}
-                  className="group relative bg-gradient-to-br from-gray-700 to-gray-900 rounded-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105"
+                  className="group relative bg-gradient-to-br from-green-50 to-lime-50 rounded-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105 border border-green-200"
                 >
-                  <div className="aspect-[4/3] relative overflow-hidden bg-gray-700">
+                  <div className="aspect-[4/3] relative overflow-hidden bg-green-100">
                     <img
                       src={example.image}
                       alt={example.name}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
                       onError={(e) => {
-                        // Fallback to emoji if image fails to load
                         e.currentTarget.style.display = 'none';
                         e.currentTarget.parentElement!.innerHTML = '<div class="w-full h-full flex items-center justify-center text-6xl">🥗</div>';
                       }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                   </div>
-                  <div className="p-3 border-t-2 border-emerald-500/30">
-                    <p className="font-medium text-white text-sm text-center group-hover:text-emerald-400 transition-colors">
+                  <div className="p-3 border-t-2 border-green-400">
+                    <p className="font-medium text-gray-800 text-sm text-center group-hover:text-green-700 transition-colors">
                       {example.name}
                     </p>
                   </div>

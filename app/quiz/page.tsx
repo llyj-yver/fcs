@@ -217,7 +217,7 @@ export default function QuizPage() {
     sessionStorage.setItem("quizEmailSent", "true");
 
     sendEmailWithFile({
-      toEmail: "jyllyvers@email.com", // replace with dynamic email
+      toEmail: "jyllyvers@email.com",
       toName: "Student",
       subject: "Quiz Passed – Module 2",
       message: `
@@ -277,69 +277,89 @@ Keep up the great work!
     const passed = percentage >= 70;
 
     return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
+      <div className="min-h-screen bg-gradient-to-br from-green-50 via-lime-50 to-emerald-50 flex items-center justify-center p-4">
         <div className="max-w-2xl w-full">
-          <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 text-center">
-            <div className={`w-24 h-24 rounded-full mx-auto mb-6 flex items-center justify-center ${passed ? 'bg-emerald-100' : 'bg-orange-100'
+          <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-12 text-center border-2 border-green-200 relative overflow-hidden">
+            {/* Decorative elements */}
+            <div className="absolute top-0 left-0 w-32 h-32 bg-gradient-to-br from-lime-200 to-green-300 rounded-full blur-3xl opacity-30"></div>
+            <div className="absolute bottom-0 right-0 w-40 h-40 bg-gradient-to-tl from-emerald-200 to-lime-300 rounded-full blur-3xl opacity-30"></div>
+            
+            <div className="relative z-10">
+              <div className={`w-28 h-28 rounded-full mx-auto mb-6 flex items-center justify-center shadow-lg ${
+                passed 
+                  ? 'bg-gradient-to-br from-green-400 to-emerald-500' 
+                  : 'bg-gradient-to-br from-orange-400 to-amber-500'
               }`}>
-              {passed ? (
-                <Award className="w-12 h-12 text-emerald-600" />
-              ) : (
-                <RotateCcw className="w-12 h-12 text-orange-600" />
-              )}
-            </div>
-
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
-              {passed ? 'Congratulations!' : 'Keep Practicing!'}
-            </h1>
-
-            <p className="text-xl text-gray-600 mb-8">
-              You scored <span className="font-bold text-gray-900">{score}</span> out of <span className="font-bold text-gray-900">{quizQuestions.length}</span>
-            </p>
-
-            <div className="mb-8">
-              <div className="flex justify-between text-sm mb-2">
-                <span className="font-medium text-gray-700">Your Score</span>
-                <span className="font-bold text-gray-900">{percentage.toFixed(0)}%</span>
+                {passed ? (
+                  <Award className="w-14 h-14 text-white" />
+                ) : (
+                  <RotateCcw className="w-14 h-14 text-white" />
+                )}
               </div>
-              <div className="w-full bg-gray-200 rounded-full h-4">
-                <div
-                  className={`h-4 rounded-full transition-all duration-1000 ${passed ? 'bg-gradient-to-r from-emerald-600 to-lime-600' : 'bg-gradient-to-r from-orange-500 to-amber-500'
+
+              <h1 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-green-700 to-emerald-700 bg-clip-text text-transparent mb-4">
+                {passed ? 'Congratulations!' : 'Keep Practicing!'}
+              </h1>
+
+              <p className="text-xl text-gray-600 mb-8">
+                You scored <span className="font-bold text-green-700 text-2xl">{score}</span> out of <span className="font-bold text-gray-800 text-2xl">{quizQuestions.length}</span>
+              </p>
+
+              <div className="mb-8 bg-gradient-to-r from-green-50 to-lime-50 rounded-2xl p-6 border border-green-200">
+                <div className="flex justify-between text-sm mb-3">
+                  <span className="font-semibold text-gray-700 flex items-center gap-2">
+                    <span className="w-4 h-4 text-green-600">🎯</span>
+                    Your Score
+                  </span>
+                  <span className="font-bold text-green-700 text-lg">{percentage.toFixed(0)}%</span>
+                </div>
+                <div className="w-full bg-green-200 rounded-full h-5 shadow-inner">
+                  <div
+                    className={`h-5 rounded-full transition-all duration-1000 shadow-md ${
+                      passed 
+                        ? 'bg-gradient-to-r from-green-500 via-lime-500 to-emerald-600' 
+                        : 'bg-gradient-to-r from-orange-400 to-amber-500'
                     }`}
-                  style={{ width: `${percentage}%` }}
-                ></div>
+                    style={{ width: `${percentage}%` }}
+                  ></div>
+                </div>
               </div>
-            </div>
 
-            {passed ? (
-              <div className="bg-emerald-50 border border-emerald-200 rounded-lg p-4 mb-8">
-                <p className="text-emerald-800 font-medium">
-                  Great job! You've demonstrated a solid understanding of salad preparation concepts.
-                </p>
-              </div>
-            ) : (
-              <div className="bg-orange-50 border border-orange-200 rounded-lg p-4 mb-8">
-                <p className="text-orange-800 font-medium">
-                  You need at least 70% to pass. Review the course materials and try again!
-                </p>
-              </div>
-            )}
+              {passed ? (
+                <div className="bg-gradient-to-r from-green-50 to-emerald-50 border-2 border-green-300 rounded-2xl p-6 mb-8 shadow-lg">
+                  <div className="flex items-center justify-center gap-2 mb-2">
+                    <span className="text-xl">✨</span>
+                    <h3 className="font-bold text-green-800 text-lg">Excellent Work!</h3>
+                  </div>
+                  <p className="text-green-700 font-medium">
+                    You've demonstrated a solid understanding of salad preparation concepts.
+                  </p>
+                </div>
+              ) : (
+                <div className="bg-gradient-to-r from-orange-50 to-amber-50 border-2 border-orange-300 rounded-2xl p-6 mb-8 shadow-lg">
+                  <h3 className="font-bold text-orange-800 text-lg mb-2">Almost There!</h3>
+                  <p className="text-orange-700 font-medium">
+                    You need at least 70% to pass. Review the course materials and try again!
+                  </p>
+                </div>
+              )}
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button
-                onClick={handleRetakeQuiz}
-                className="flex items-center justify-center gap-2 px-6 py-3 bg-gray-900 text-white font-semibold rounded-lg hover:bg-gray-800 transition-all"
-              >
-                <RotateCcw className="w-5 h-5" />
-                Retake Quiz
-              </button>
-              <button
-                onClick={() => window.location.href = '/navigation'}
-                className="flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-r from-emerald-600 to-lime-600 text-white font-semibold rounded-lg hover:shadow-lg transition-all"
-              >
-                <Home className="w-5 h-5" />
-                Back to Course
-              </button>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <button
+                  onClick={handleRetakeQuiz}
+                  className="flex items-center justify-center gap-2 px-8 py-4 bg-white text-green-700 font-bold rounded-xl hover:bg-green-50 transition-all shadow-md border-2 border-green-300 hover:scale-105"
+                >
+                  <RotateCcw className="w-5 h-5" />
+                  Retake Quiz
+                </button>
+                <button
+                  onClick={() => window.location.href = '/navigation'}
+                  className="flex items-center justify-center gap-2 px-8 py-4 bg-gradient-to-r from-lime-500 to-green-600 text-white font-bold rounded-xl hover:shadow-xl transition-all hover:scale-105"
+                >
+                  <Home className="w-5 h-5" />
+                  Back to Course
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -348,41 +368,48 @@ Keep up the great work!
   }
 
   return (
-    <div className="min-h-screen bg-gray-900 py-8 px-4">
+    <div className="min-h-screen bg-gradient-to-br from-green-50 via-lime-50 to-emerald-50 py-8 px-4">
       {/* Header */}
       <div className="max-w-4xl mx-auto mb-8">
-        <div className="flex items-center justify-between text-white mb-6">
+        <div className="flex items-center justify-between mb-6">
           <button
             onClick={() => window.location.href = '/navigation'}
-            className="flex items-center gap-2 text-gray-300 hover:text-white transition-colors"
+            className="flex items-center gap-2 text-green-700 hover:text-green-900 transition-colors bg-white px-4 py-2 rounded-lg shadow-sm border border-green-200 hover:shadow-md"
           >
             <Home className="w-5 h-5" />
-            <span className="text-sm">Exit Quiz</span>
+            <span className="text-sm font-medium">Exit Quiz</span>
           </button>
 
-          <div className="flex items-center gap-2">
-            <Clock className="w-5 h-5" />
-            <span className="text-sm font-medium">Question {currentQuestion + 1} of {quizQuestions.length}</span>
+          <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-lg shadow-sm border border-green-200">
+            <Clock className="w-5 h-5 text-green-600" />
+            <span className="text-sm font-semibold text-gray-700">Question {currentQuestion + 1} of {quizQuestions.length}</span>
           </div>
         </div>
 
         {/* Progress Bar */}
-        <div className="w-full bg-gray-800 rounded-full h-2">
-          <div
-            className="bg-gradient-to-r from-emerald-500 to-lime-500 h-2 rounded-full transition-all duration-500"
-            style={{ width: `${progress}%` }}
-          ></div>
+        <div className="bg-white rounded-full p-1 shadow-md border border-green-200">
+          <div className="w-full bg-green-100 rounded-full h-3 overflow-hidden">
+            <div
+              className="bg-gradient-to-r from-lime-500 via-green-500 to-emerald-600 h-3 rounded-full transition-all duration-500 shadow-md"
+              style={{ width: `${progress}%` }}
+            ></div>
+          </div>
         </div>
       </div>
 
       {/* Question Card */}
       <div className="max-w-4xl mx-auto">
-        <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
+        <div className="bg-white rounded-3xl shadow-2xl overflow-hidden border-2 border-green-200">
           {/* Question Header */}
-          <div className="bg-gray-50 border-b border-gray-200 p-6 md:p-8">
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 leading-tight">
-              {question.question}
-            </h2>
+          <div className="bg-gradient-to-r from-lime-50 to-green-50 border-b-2 border-green-200 p-6 md:p-8">
+            <div className="flex items-start gap-4">
+              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-lime-500 to-green-600 flex items-center justify-center flex-shrink-0 shadow-lg">
+                <span className="text-white font-bold text-lg">{currentQuestion + 1}</span>
+              </div>
+              <h2 className="text-2xl md:text-3xl font-bold text-gray-800 leading-tight">
+                {question.question}
+              </h2>
+            </div>
           </div>
 
           {/* Options */}
@@ -398,39 +425,42 @@ Keep up the great work!
                   key={index}
                   onClick={() => handleAnswerSelect(index)}
                   disabled={showExplanation}
-                  className={`w-full text-left p-4 md:p-5 rounded-xl border-2 transition-all ${showCorrect
-                    ? 'border-emerald-500 bg-emerald-50'
-                    : showIncorrect
-                      ? 'border-red-500 bg-red-50'
-                      : isSelected
-                        ? 'border-gray-900 bg-gray-50'
-                        : 'border-gray-200 hover:border-gray-400 hover:bg-gray-50'
-                    } ${showExplanation ? 'cursor-not-allowed' : 'cursor-pointer'}`}
+                  className={`w-full text-left p-5 md:p-6 rounded-2xl border-2 transition-all ${
+                    showCorrect
+                      ? 'border-green-500 bg-gradient-to-r from-green-50 to-emerald-50 shadow-lg scale-105'
+                      : showIncorrect
+                        ? 'border-red-400 bg-gradient-to-r from-red-50 to-orange-50 shadow-lg'
+                        : isSelected
+                          ? 'border-lime-500 bg-gradient-to-r from-lime-50 to-green-50 shadow-md scale-105'
+                          : 'border-gray-200 hover:border-green-300 hover:bg-green-50/50 hover:shadow-md'
+                  } ${showExplanation ? 'cursor-not-allowed' : 'cursor-pointer hover:scale-102'}`}
                 >
                   <div className="flex items-center gap-4">
                     {/* Radio Button */}
-                    <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center flex-shrink-0 ${showCorrect
-                      ? 'border-emerald-500 bg-emerald-500'
-                      : showIncorrect
-                        ? 'border-red-500 bg-red-500'
-                        : isSelected
-                          ? 'border-gray-900 bg-gray-900'
-                          : 'border-gray-300'
-                      }`}>
-                      {showCorrect && <CheckCircle2 className="w-4 h-4 text-white" />}
-                      {showIncorrect && <XCircle className="w-4 h-4 text-white" />}
+                    <div className={`w-7 h-7 rounded-full border-2 flex items-center justify-center flex-shrink-0 transition-all ${
+                      showCorrect
+                        ? 'border-green-500 bg-green-500 shadow-md'
+                        : showIncorrect
+                          ? 'border-red-400 bg-red-400 shadow-md'
+                          : isSelected
+                            ? 'border-lime-600 bg-lime-600 shadow-md'
+                            : 'border-gray-300 bg-white'
+                    }`}>
+                      {showCorrect && <CheckCircle2 className="w-5 h-5 text-white" />}
+                      {showIncorrect && <XCircle className="w-5 h-5 text-white" />}
                       {isSelected && !showExplanation && (
-                        <div className="w-2 h-2 bg-white rounded-full" />
+                        <div className="w-3 h-3 bg-white rounded-full" />
                       )}
                     </div>
 
                     {/* Option Text */}
-                    <span className={`text-base md:text-lg font-medium ${showCorrect
-                      ? 'text-emerald-900'
-                      : showIncorrect
-                        ? 'text-red-900'
-                        : 'text-gray-900'
-                      }`}>
+                    <span className={`text-base md:text-lg font-medium ${
+                      showCorrect
+                        ? 'text-green-900'
+                        : showIncorrect
+                          ? 'text-red-900'
+                          : 'text-gray-800'
+                    }`}>
                       {option}
                     </span>
                   </div>
@@ -441,25 +471,32 @@ Keep up the great work!
 
           {/* Explanation */}
           {showExplanation && (
-            <div className={`mx-6 md:mx-8 mb-6 md:mb-8 p-5 rounded-xl border-2 ${isCorrect
-              ? 'bg-emerald-50 border-emerald-200'
-              : 'bg-red-50 border-red-200'
-              }`}>
-              <div className="flex items-start gap-3">
+            <div className={`mx-6 md:mx-8 mb-6 md:mb-8 p-6 rounded-2xl border-2 shadow-lg ${
+              isCorrect
+                ? 'bg-gradient-to-r from-green-50 to-emerald-50 border-green-300'
+                : 'bg-gradient-to-r from-red-50 to-orange-50 border-red-300'
+            }`}>
+              <div className="flex items-start gap-4">
                 <div className="flex-shrink-0 mt-1">
                   {isCorrect ? (
-                    <CheckCircle2 className="w-6 h-6 text-emerald-600" />
+                    <div className="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center shadow-md">
+                      <CheckCircle2 className="w-6 h-6 text-white" />
+                    </div>
                   ) : (
-                    <XCircle className="w-6 h-6 text-red-600" />
+                    <div className="w-10 h-10 rounded-full bg-red-400 flex items-center justify-center shadow-md">
+                      <XCircle className="w-6 h-6 text-white" />
+                    </div>
                   )}
                 </div>
                 <div>
-                  <h3 className={`font-bold text-lg mb-2 ${isCorrect ? 'text-emerald-900' : 'text-red-900'
-                    }`}>
-                    {isCorrect ? 'Correct!' : 'Incorrect'}
+                  <h3 className={`font-bold text-xl mb-2 ${
+                    isCorrect ? 'text-green-900' : 'text-red-900'
+                  }`}>
+                    {isCorrect ? '✨ Correct!' : '❌ Incorrect'}
                   </h3>
-                  <p className={`text-base leading-relaxed ${isCorrect ? 'text-emerald-800' : 'text-red-800'
-                    }`}>
+                  <p className={`text-base leading-relaxed ${
+                    isCorrect ? 'text-green-800' : 'text-red-800'
+                  }`}>
                     {question.explanation}
                   </p>
                 </div>
@@ -468,22 +505,23 @@ Keep up the great work!
           )}
 
           {/* Action Buttons */}
-          <div className="bg-gray-50 border-t border-gray-200 p-6 md:p-8">
+          <div className="bg-gradient-to-r from-green-50 to-lime-50 border-t-2 border-green-200 p-6 md:p-8">
             {!showExplanation ? (
               <button
                 onClick={handleSubmitAnswer}
                 disabled={selectedAnswer === null}
-                className={`w-full py-4 rounded-xl font-bold text-lg transition-all ${selectedAnswer === null
-                  ? 'bg-gray-300 text-gray-500 cursor-not-allowed'
-                  : 'bg-gray-900 text-white hover:bg-gray-800 hover:shadow-lg'
-                  }`}
+                className={`w-full py-4 rounded-xl font-bold text-lg transition-all shadow-md ${
+                  selectedAnswer === null
+                    ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                    : 'bg-gradient-to-r from-lime-500 to-green-600 text-white hover:shadow-xl hover:scale-105'
+                }`}
               >
                 Check Answer
               </button>
             ) : (
               <button
                 onClick={handleNextQuestion}
-                className="w-full py-4 bg-gradient-to-r from-emerald-600 to-lime-600 text-white font-bold text-lg rounded-xl hover:shadow-lg transition-all flex items-center justify-center gap-2"
+                className="w-full py-4 bg-gradient-to-r from-lime-500 to-green-600 text-white font-bold text-lg rounded-xl hover:shadow-xl transition-all flex items-center justify-center gap-2 hover:scale-105"
               >
                 {currentQuestion < quizQuestions.length - 1 ? (
                   <>
@@ -498,6 +536,18 @@ Keep up the great work!
                 )}
               </button>
             )}
+          </div>
+        </div>
+
+        {/* Score Indicator */}
+        <div className="mt-6 bg-white rounded-2xl p-4 shadow-md border border-green-200">
+          <div className="flex items-center justify-between">
+            <span className="text-sm font-medium text-gray-600">Current Score</span>
+            <div className="flex items-center gap-2">
+              <span className="text-2xl font-bold text-green-700">{score}</span>
+              <span className="text-gray-400">/</span>
+              <span className="text-lg text-gray-600">{quizQuestions.length}</span>
+            </div>
           </div>
         </div>
       </div>

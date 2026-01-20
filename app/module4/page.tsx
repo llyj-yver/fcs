@@ -290,13 +290,13 @@ const VideoQuizSystem: React.FC = () => {
   const isCorrect = selectedAnswer === currentQuiz?.correctAnswer;
 
   return (
-    <div className="min-h-screen bg-gray-900">
+    <div className="min-h-screen bg-gradient-to-br from-green-50 via-lime-50 to-emerald-50">
       <div className="max-w-[1400px] mx-auto px-6 py-8">
         {/* Header */}
         <div className="mb-8">
           <button
             onClick={() => window.location.href = '/navigation'}
-            className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors mb-4 group"
+            className="flex items-center gap-2 text-green-700 hover:text-green-900 transition-colors mb-4 group"
           >
             <svg className="w-5 h-5 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -305,15 +305,15 @@ const VideoQuizSystem: React.FC = () => {
           </button>
           <div className="flex items-center justify-between">
             <div>
-              <h1 className="text-3xl font-bold text-white mb-3">
+              <h1 className="text-3xl font-bold text-gray-800 mb-3">
                 Interactive Video Quiz - Module 4
               </h1>
-              <p className="text-gray-400 text-base">
+              <p className="text-gray-600 text-base">
                 Watch the video and answer questions when they appear
               </p>
             </div>
             {isCompleted && (
-              <div className="flex items-center gap-2 bg-emerald-500 text-white px-4 py-2 rounded-lg">
+              <div className="flex items-center gap-2 bg-gradient-to-r from-green-500 to-emerald-500 text-white px-4 py-2 rounded-lg shadow-md">
                 <CheckCircle2 className="w-5 h-5" />
                 <span className="font-semibold">Completed</span>
               </div>
@@ -325,11 +325,11 @@ const VideoQuizSystem: React.FC = () => {
           {/* Video Section */}
           <div className="space-y-6">
             {/* Video Player */}
-            <div className="bg-black rounded-xl overflow-hidden shadow-2xl">
-              <div className="relative aspect-video bg-black">
+            <div className="bg-white rounded-xl overflow-hidden shadow-lg border border-green-200">
+              <div className="relative aspect-video bg-gray-100">
                 <video
                   ref={videoRef}
-                  src="image/video/mods4_video.mp4"   // 👈 PUT YOUR VIDEO HERE
+                  src="image/video/mods4_video.mp4"
                   className="w-full h-full object-contain"
                   muted={isMuted}
                   onTimeUpdate={handleTimeUpdate}
@@ -339,12 +339,12 @@ const VideoQuizSystem: React.FC = () => {
               </div>
               {/* Video Controls */}
               {!showQuiz && (
-                <div className="bg-gray-950 p-5">
+                <div className="bg-gradient-to-r from-green-100 to-lime-100 p-5">
                   {/* Timeline with Quiz Markers */}
                   <div className="mb-4 relative">
                     <div
                       onClick={handleTimelineClick}
-                      className="w-full bg-gray-700 rounded-full h-2 cursor-pointer relative group"
+                      className="w-full bg-green-200 rounded-full h-2 cursor-pointer relative group"
                     >
                       {/* Quiz Markers */}
                       {quizData.map((quiz, idx) => (
@@ -353,9 +353,9 @@ const VideoQuizSystem: React.FC = () => {
                           className="absolute top-1/2 -translate-y-1/2 -translate-x-1/2 transition-all z-10"
                           style={{ left: `${(quiz.timePopUp / videoDuration) * 100}%` }}
                         >
-                          <div className={`w-4 h-4 rounded-full border-2 border-gray-950 transition-all ${askedQuestions.has(idx)
-                              ? 'bg-emerald-500'
-                              : 'bg-yellow-500 animate-pulse'
+                          <div className={`w-4 h-4 rounded-full border-2 border-white transition-all ${askedQuestions.has(idx)
+                              ? 'bg-green-500'
+                              : 'bg-yellow-400 animate-pulse'
                             }`}>
                           </div>
                         </div>
@@ -363,13 +363,13 @@ const VideoQuizSystem: React.FC = () => {
 
                       {/* Progress Bar */}
                       <div
-                        className="bg-red-600 h-full rounded-full transition-all relative"
+                        className="bg-gradient-to-r from-lime-500 to-green-600 h-full rounded-full transition-all relative"
                         style={{ width: `${(currentTime / videoDuration) * 100}%` }}
                       >
-                        <div className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 bg-red-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <div className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 bg-green-600 rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
                       </div>
                     </div>
-                    <div className="flex justify-between text-xs text-gray-400 mt-2">
+                    <div className="flex justify-between text-xs text-gray-600 mt-2">
                       <span>{formatTime(currentTime)}</span>
                       <span>{formatTime(videoDuration)}</span>
                     </div>
@@ -379,28 +379,28 @@ const VideoQuizSystem: React.FC = () => {
                   <div className="flex items-center gap-3">
                     <button
                       onClick={togglePlayPause}
-                      className="bg-white hover:bg-gray-100 text-gray-900 p-3 rounded-full transition-all hover:scale-105"
+                      className="bg-gradient-to-r from-lime-500 to-green-600 hover:from-lime-600 hover:to-green-700 text-white p-3 rounded-full transition-all hover:scale-105 shadow-md"
                     >
                       {isPlaying ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6" />}
                     </button>
 
                     <button
                       onClick={() => skipTime(-10)}
-                      className="bg-gray-800 hover:bg-gray-700 text-white p-2.5 rounded-full transition-all"
+                      className="bg-white hover:bg-green-50 text-green-700 p-2.5 rounded-full transition-all shadow-sm border border-green-300"
                     >
                       <SkipBack className="w-5 h-5" />
                     </button>
 
                     <button
                       onClick={() => skipTime(10)}
-                      className="bg-gray-800 hover:bg-gray-700 text-white p-2.5 rounded-full transition-all"
+                      className="bg-white hover:bg-green-50 text-green-700 p-2.5 rounded-full transition-all shadow-sm border border-green-300"
                     >
                       <SkipForward className="w-5 h-5" />
                     </button>
 
                     <button
                       onClick={resetVideo}
-                      className="bg-gray-800 hover:bg-gray-700 text-white p-2.5 rounded-full transition-all"
+                      className="bg-white hover:bg-green-50 text-green-700 p-2.5 rounded-full transition-all shadow-sm border border-green-300"
                     >
                       <RotateCcw className="w-5 h-5" />
                     </button>
@@ -409,7 +409,7 @@ const VideoQuizSystem: React.FC = () => {
                     <div className="flex items-center gap-3 ml-auto">
                       <button
                         onClick={() => setIsMuted(!isMuted)}
-                        className="bg-gray-800 hover:bg-gray-700 text-white p-2.5 rounded-full transition-all"
+                        className="bg-white hover:bg-green-50 text-green-700 p-2.5 rounded-full transition-all shadow-sm border border-green-300"
                       >
                         {isMuted || volume === 0 ? (
                           <VolumeX className="w-5 h-5" />
@@ -426,10 +426,10 @@ const VideoQuizSystem: React.FC = () => {
                           setVolume(Number(e.target.value));
                           setIsMuted(false);
                         }}
-                        className="w-24 h-1 accent-white cursor-pointer"
+                        className="w-24 h-1 accent-green-600 cursor-pointer"
                       />
                       <button
-                        className="bg-gray-800 hover:bg-gray-700 text-white p-2.5 rounded-full transition-all"
+                        className="bg-white hover:bg-green-50 text-green-700 p-2.5 rounded-full transition-all shadow-sm border border-green-300"
                       >
                         <Maximize className="w-5 h-5" />
                       </button>
@@ -441,24 +441,24 @@ const VideoQuizSystem: React.FC = () => {
 
             {/* Quiz Modal */}
             {showQuiz && currentQuiz && (
-              <div className="bg-white rounded-xl shadow-2xl overflow-hidden animate-fade-in">
-                <div className="bg-gray-900 text-white px-8 py-5 flex items-center justify-between">
+              <div className="bg-white rounded-xl shadow-xl overflow-hidden animate-fade-in border border-green-200">
+                <div className="bg-gradient-to-r from-lime-600 to-green-600 text-white px-8 py-5 flex items-center justify-between">
                   <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 rounded-full bg-yellow-500 flex items-center justify-center flex-shrink-0">
-                      <span className="font-bold text-gray-900 text-xl">?</span>
+                    <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center flex-shrink-0">
+                      <span className="font-bold text-green-600 text-xl">?</span>
                     </div>
                     <div>
                       <h3 className="font-bold text-xl">Knowledge Check</h3>
-                      <p className="text-sm text-gray-400">Question {currentQuizIndex + 1} of {quizData.length}</p>
+                      <p className="text-sm text-green-100">Question {currentQuizIndex + 1} of {quizData.length}</p>
                     </div>
                   </div>
-                  <span className="bg-gray-800 text-gray-300 px-4 py-2 rounded-lg text-sm font-medium">
+                  <span className="bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-lg text-sm font-medium">
                     {formatTime(currentQuiz.timePopUp)}
                   </span>
                 </div>
 
                 <div className="p-8">
-                  <h3 className="text-2xl font-bold text-gray-900 mb-8">
+                  <h3 className="text-2xl font-bold text-gray-800 mb-8">
                     {currentQuiz.question}
                   </h3>
 
@@ -476,34 +476,34 @@ const VideoQuizSystem: React.FC = () => {
                           onClick={() => !showExplanation && handleAnswerSelect(option)}
                           disabled={showExplanation}
                           className={`w-full text-left p-5 border-2 rounded-xl transition-all ${showCorrect
-                              ? 'border-emerald-500 bg-emerald-50'
+                              ? 'border-green-500 bg-green-50'
                               : showIncorrect
-                                ? 'border-red-500 bg-red-50'
+                                ? 'border-red-400 bg-red-50'
                                 : isSelected
-                                  ? 'border-gray-900 bg-gray-50'
-                                  : 'border-gray-300 hover:border-gray-400 hover:bg-gray-50'
+                                  ? 'border-lime-500 bg-lime-50'
+                                  : 'border-gray-200 hover:border-green-400 hover:bg-green-50/50'
                             } ${showExplanation ? 'cursor-not-allowed' : 'cursor-pointer'}`}
                         >
                           <div className="flex items-start gap-4">
                             <div className={`w-6 h-6 rounded-full border-2 flex items-center justify-center flex-shrink-0 transition-all ${showCorrect
-                                ? 'border-emerald-500 bg-emerald-500'
+                                ? 'border-green-500 bg-green-500'
                                 : showIncorrect
-                                  ? 'border-red-500 bg-red-500'
+                                  ? 'border-red-400 bg-red-400'
                                   : isSelected
-                                    ? 'border-gray-900'
+                                    ? 'border-lime-600'
                                     : 'border-gray-300'
                               }`}>
                               {showCorrect && <CheckCircle2 className="w-4 h-4 text-white" />}
                               {showIncorrect && <XCircle className="w-4 h-4 text-white" />}
                               {isSelected && !showExplanation && (
-                                <div className="w-3 h-3 bg-gray-900 rounded-full" />
+                                <div className="w-3 h-3 bg-lime-600 rounded-full" />
                               )}
                             </div>
                             <span className={`text-lg font-medium ${showCorrect
-                                ? 'text-emerald-900'
+                                ? 'text-green-800'
                                 : showIncorrect
-                                  ? 'text-red-900'
-                                  : 'text-gray-900'
+                                  ? 'text-red-800'
+                                  : 'text-gray-800'
                               }`}>
                               {currentQuiz[option]}
                             </span>
@@ -517,24 +517,24 @@ const VideoQuizSystem: React.FC = () => {
                   {showExplanation && selectedAnswer && (
                     <div
                       className={`p-5 rounded-xl mb-6 border-2 animate-fade-in ${isCorrect
-                          ? 'bg-emerald-50 border-emerald-200'
-                          : 'bg-red-50 border-red-200'
+                          ? 'bg-green-50 border-green-300'
+                          : 'bg-red-50 border-red-300'
                         }`}
                     >
                       <div className="flex items-start gap-4">
                         <div className="flex-shrink-0 mt-0.5">
                           {isCorrect ? (
-                            <CheckCircle2 className="w-6 h-6 text-emerald-600" />
+                            <CheckCircle2 className="w-6 h-6 text-green-600" />
                           ) : (
-                            <XCircle className="w-6 h-6 text-red-600" />
+                            <XCircle className="w-6 h-6 text-red-500" />
                           )}
                         </div>
                         <div>
-                          <h4 className={`font-bold text-lg mb-2 ${isCorrect ? 'text-emerald-900' : 'text-red-900'
+                          <h4 className={`font-bold text-lg mb-2 ${isCorrect ? 'text-green-800' : 'text-red-800'
                             }`}>
                             {isCorrect ? 'Correct!' : 'Not quite right'}
                           </h4>
-                          <p className={`text-base leading-relaxed ${isCorrect ? 'text-emerald-800' : 'text-red-800'
+                          <p className={`text-base leading-relaxed ${isCorrect ? 'text-green-700' : 'text-red-700'
                             }`}>
                             {currentQuiz[`${selectedAnswer}Description` as keyof QuizQuestion]}
                           </p>
@@ -548,14 +548,14 @@ const VideoQuizSystem: React.FC = () => {
                     <button
                       onClick={handleSubmitAnswer}
                       disabled={!selectedAnswer}
-                      className="w-full bg-gray-900 hover:bg-gray-800 disabled:bg-gray-300 disabled:cursor-not-allowed text-white font-semibold py-4 px-6 rounded-xl transition-all text-lg"
+                      className="w-full bg-gradient-to-r from-lime-500 to-green-600 hover:from-lime-600 hover:to-green-700 disabled:from-gray-300 disabled:to-gray-300 disabled:cursor-not-allowed text-white font-semibold py-4 px-6 rounded-xl transition-all text-lg shadow-md"
                     >
                       Check Answer
                     </button>
                   ) : isCorrect ? (
                     <button
                       onClick={handleNextQuestion}
-                      className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-4 px-6 rounded-xl transition-all flex items-center justify-center gap-3 text-lg"
+                      className="w-full bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-semibold py-4 px-6 rounded-xl transition-all flex items-center justify-center gap-3 text-lg shadow-md"
                     >
                       Continue Video
                       <Play className="w-5 h-5" />
@@ -566,7 +566,7 @@ const VideoQuizSystem: React.FC = () => {
                         setSelectedAnswer(null);
                         setShowExplanation(false);
                       }}
-                      className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-4 px-6 rounded-xl transition-all text-lg"
+                      className="w-full bg-gradient-to-r from-orange-400 to-red-500 hover:from-orange-500 hover:to-red-600 text-white font-semibold py-4 px-6 rounded-xl transition-all text-lg shadow-md"
                     >
                       Try Again
                     </button>
@@ -578,18 +578,18 @@ const VideoQuizSystem: React.FC = () => {
 
           {/* Sidebar */}
           <div>
-            <div className="bg-white rounded-xl shadow-lg p-6 sticky top-8">
-              <h3 className="font-bold text-xl text-gray-900 mb-6">Course Progress</h3>
+            <div className="bg-white rounded-xl shadow-lg p-6 sticky top-8 border border-green-200">
+              <h3 className="font-bold text-xl text-gray-800 mb-6">Course Progress</h3>
 
               {/* Progress Bar */}
               <div className="mb-8">
                 <div className="flex justify-between text-sm mb-3">
                   <span className="font-medium text-gray-700">Quiz Completion</span>
-                  <span className="font-bold text-gray-900">{progress.toFixed(0)}%</span>
+                  <span className="font-bold text-green-700">{progress.toFixed(0)}%</span>
                 </div>
-                <div className="w-full bg-gray-200 rounded-full h-3">
+                <div className="w-full bg-green-100 rounded-full h-3">
                   <div
-                    className="bg-gradient-to-r from-purple-600 to-blue-600 h-full rounded-full transition-all duration-500"
+                    className="bg-gradient-to-r from-lime-500 via-green-500 to-emerald-600 h-full rounded-full transition-all duration-500"
                     style={{ width: `${progress}%` }}
                   />
                 </div>
@@ -605,13 +605,13 @@ const VideoQuizSystem: React.FC = () => {
                   <div
                     key={idx}
                     className={`flex items-center gap-3 p-3 rounded-lg border transition-all ${askedQuestions.has(idx)
-                        ? 'bg-emerald-50 border-emerald-200'
-                        : 'bg-gray-50 border-gray-200'
+                        ? 'bg-green-50 border-green-300'
+                        : 'bg-lime-50/50 border-lime-200'
                       }`}
                   >
                     <div className={`w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 ${askedQuestions.has(idx)
-                        ? 'bg-emerald-500'
-                        : 'bg-gray-300'
+                        ? 'bg-gradient-to-br from-green-500 to-emerald-600'
+                        : 'bg-gradient-to-br from-lime-400 to-green-500'
                       }`}>
                       {askedQuestions.has(idx) ? (
                         <CheckCircle2 className="w-5 h-5 text-white" />
@@ -620,10 +620,10 @@ const VideoQuizSystem: React.FC = () => {
                       )}
                     </div>
                     <div className="flex-1 min-w-0">
-                      <p className="text-sm font-medium text-gray-900">
+                      <p className="text-sm font-medium text-gray-800">
                         Quiz {idx + 1}
                       </p>
-                      <p className="text-xs text-gray-500">
+                      <p className="text-xs text-gray-600">
                         {formatTime(quiz.timePopUp)}
                       </p>
                     </div>
@@ -633,13 +633,13 @@ const VideoQuizSystem: React.FC = () => {
 
               {/* Completion Badge */}
               {progress === 100 && (
-                <div className="bg-gradient-to-r from-yellow-50 to-amber-50 border-2 border-yellow-300 rounded-xl p-5 text-center animate-fade-in">
+                <div className="bg-gradient-to-br from-yellow-50 to-amber-50 border-2 border-yellow-400 rounded-xl p-5 text-center animate-fade-in">
                   <Award className="w-14 h-14 text-yellow-600 mx-auto mb-3" />
-                  <h4 className="font-bold text-base text-gray-900 mb-2">Module Complete! 🎉</h4>
+                  <h4 className="font-bold text-base text-gray-800 mb-2">Module Complete! 🎉</h4>
                   <p className="text-sm text-gray-600 mb-4">Great job on finishing all knowledge checks</p>
                   <button
                     onClick={() => window.location.href = '/navigation'}
-                    className="w-full bg-gray-900 hover:bg-gray-800 text-white font-semibold py-3 px-4 rounded-lg transition-all"
+                    className="w-full bg-gradient-to-r from-lime-500 to-green-600 hover:from-lime-600 hover:to-green-700 text-white font-semibold py-3 px-4 rounded-lg transition-all shadow-md"
                   >
                     Back to Course
                   </button>
