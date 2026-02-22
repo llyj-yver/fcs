@@ -13,9 +13,9 @@ import {
 import Image from "next/image";
 
 const images = [
-  "/image/classification_cover.png",
-  "/salads/salad2.jpg",
-  "/salads/salad3.jpg",
+  "/image/landingpage/classification_cover.png",
+  "/image/landingpage/components_salad.png",
+  "/image/landingpage/types_dressing.png",
 ];
 
 export default function HomePage() {
@@ -86,14 +86,14 @@ export default function HomePage() {
             {/* Right - Image Carousel */}
             <div className="relative group">
               <div className="overflow-hidden rounded-3xl shadow-2xl border-2 border-white/20 backdrop-blur-sm bg-white/5">
-                <div className="relative h-[400px] md:h-[500px] bg-gradient-to-br from-lime-100 via-green-50 to-emerald-100 flex items-center justify-center">
-                  <div className="text-center p-8">
-                    <div className="w-40 h-40 mx-auto mb-8 bg-gradient-to-br from-lime-500 to-green-600 rounded-3xl flex items-center justify-center shadow-2xl shadow-green-500/40 rotate-3 hover:rotate-0 transition-transform">
-                      <BookOpen className="w-20 h-20 text-white" />
-                    </div>
-                    <p className="text-4xl font-extrabold text-green-900 mb-3">Course Preview</p>
-                    <p className="text-xl text-green-700 font-medium">Professional Salad Techniques</p>
-                  </div>
+                <div className="relative h-[400px] md:h-[500px]">
+                  <Image
+                    src={images[current]}
+                    alt={`Salad example ${current + 1}`}
+                    fill
+                    className="object-cover"
+                    priority={current === 0}
+                  />
                   
                   {/* Image Counter */}
                   <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex gap-3 bg-white/90 backdrop-blur-sm px-4 py-2 rounded-full shadow-lg">

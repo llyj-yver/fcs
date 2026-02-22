@@ -19,137 +19,136 @@ interface QuizQuestion {
 
 const quizData: QuizQuestion[] = [
   {
-    question: "Why should vegetables be cut close to serving time when preparing salads?",
-    a: "To make them softer",
-    b: "To reduce preparation time",
-    c: "To maintain freshness and appearance",
-    d: "To absorb more dressing",
-    aDescription: "Cutting vegetables early does not make them softer in a desirable way.",
-    bDescription: "Cutting close to serving time is not mainly about saving time.",
-    cDescription: "Correct! Cutting vegetables close to serving time helps maintain freshness and an attractive appearance.",
-    dDescription: "Vegetables do not need to absorb dressing early.",
+    question: "Why is it important to wear proper PPE and wash all salad vegetables?",
+    a: "To make the salad taste sweeter",
+    b: "To reduce cooking time",
+    c: "To maintain cleanliness and prevent food contamination",
+    d: "To increase the size of the vegetables",
+    aDescription: "Taste isn't affected by PPE.",
+    bDescription: "Washing doesn't change cooking duration.",
+    cDescription: "Correct! PPE and washing are essential for hygiene and food safety.",
+    dDescription: "Washing does not grow the vegetables.",
     correctAnswer: "c",
-    timePopUp: 90
+    timePopUp: 11
   },
   {
-    question: "What is the correct practice when cooking vegetables, pasta, and grains for salads?",
-    a: "Overcook them for better flavor",
-    b: "Cook properly, drain well, and chill",
-    c: "Cook and serve immediately while hot",
-    d: "Cook with dressing already added",
-    aDescription: "Overcooking affects texture and quality.",
-    bDescription: "Correct! Proper cooking, thorough draining, and chilling ensure good quality salads.",
-    cDescription: "Serving hot affects salad quality and safety.",
-    dDescription: "Dressings should be added later, not during cooking.",
+    question: "In preparing the ingredients, why should we wash it thoroughly?",
+    a: "To remove dirt and impurities",
+    b: "To add extra bacteria for a better flavor profile",
+    c: "To help the dressing slide off the leaves easily",
+    d: "To increase the temperature of the vegetables before serving",
+    aDescription: "Correct! Thorough washing removes physical and biological contaminants.",
+    bDescription: "Bacteria should be removed, not added!",
+    cDescription: "Dressing should adhere, not slide off.",
+    dDescription: "Washing usually uses cool water, not hot.",
+    correctAnswer: "a",
+    timePopUp: 28
+  },
+  {
+    question: "Why should potatoes be boiled whole before peeling and cutting?",
+    a: "To reduce cooking time",
+    b: "To make peeling easier",
+    c: "To preserve nutrients",
+    d: "To make the potatoes softer for frying",
+    aDescription: "Boiling whole actually takes longer than small pieces.",
+    bDescription: "While true, it's not the primary nutritional reason.",
+    cDescription: "Correct! Cooking them whole keeps vitamins and minerals locked inside.",
+    dDescription: "This is for salads, not frying.",
+    correctAnswer: "c",
+    timePopUp: 42
+  },
+  {
+    question: "Why should vegetables be peeled only after cooling?",
+    a: "To avoid burning your hands",
+    b: "To prevent damage to the texture and avoid overcooking",
+    c: "To make chopping faster",
+    d: "To increase the size of the vegetables",
+    aDescription: "Safety is a factor, but texture is the culinary priority.",
+    bDescription: "Correct! Cooling stabilizes the vegetable so peeling doesn't turn it into mush.",
+    cDescription: "Cooling actually adds a step to the process.",
+    dDescription: "Vegetables don't grow after being cooked.",
     correctAnswer: "b",
-    timePopUp: 90
+    timePopUp: 51
   },
   {
-    question: "Why must ingredients be cooled before adding mayonnaise in bound salads?",
-    a: "To improve color",
-    b: "To make mixing easier",
-    c: "To prevent separation and spoilage",
-    d: "To increase flavor absorption",
-    aDescription: "Cooling does not mainly affect color.",
-    bDescription: "Ease of mixing is not the main reason.",
-    cDescription: "Correct! Cooling ingredients prevents mayonnaise from separating and reduces the risk of spoilage.",
-    dDescription: "Flavor absorption is not the primary concern.",
+    question: "Why should we chop all the ingredients into uniform pieces?",
+    a: "To make sure some pieces stay raw while others are overcooked",
+    b: "To prevent the salad dressing from touching the vegetables",
+    c: "To make the salad much harder to chew and swallow",
+    d: "To ensure visual appeal and easier mixing",
+    aDescription: "Uniformity ensures even cooking/texture.",
+    bDescription: "Uniformity helps dressing coat evenly.",
+    cDescription: "Uniformity makes it easier to eat, not harder.",
+    dDescription: "Correct! Evenly sized pieces look professional and mix better.",
+    correctAnswer: "d",
+    timePopUp: 63
+  },
+  {
+    question: "Why should cooked ingredients be thoroughly cooled before mixing with mayonnaise?",
+    a: "To improve the color of the salad",
+    b: "To make chopping easier",
+    c: "To prevent the mayonnaise from spoiling and ensure food safety",
+    d: "To cook the mayonnaise faster",
+    aDescription: "Cooling is about safety, not aesthetics.",
+    bDescription: "Chopping should be done before mixing.",
+    cDescription: "Correct! Heat can cause mayonnaise to break down and breed bacteria.",
+    dDescription: "Mayonnaise should not be cooked in a salad.",
     correctAnswer: "c",
-    timePopUp: 90
+    timePopUp: 72
   },
   {
-    question: "Why are potatoes cooked whole before peeling for bound salads?",
-    a: "To make peeling easier",
-    b: "To retain flavor and nutrients",
-    c: "To reduce cooking time",
-    d: "To improve color",
-    aDescription: "Ease of peeling is not the main reason.",
-    bDescription: "Correct! Cooking potatoes whole helps retain their flavor and nutrients.",
-    cDescription: "Cooking whole does not reduce cooking time.",
-    dDescription: "Color improvement is not the main purpose.",
+    question: "Why should the dressing be gently mixed into the salad?",
+    a: "To cool the salad faster",
+    b: "To add more salt",
+    c: "To avoid crushing or damaging the main ingredients",
+    d: "To make the salad thicker",
+    aDescription: "Mixing doesn't significantly lower temperature.",
+    bDescription: "Salt is in the dressing, not the mixing style.",
+    cDescription: "Correct! Gentle mixing preserves the integrity and texture of the ingredients.",
+    dDescription: "Gentle mixing maintains lightness.",
+    correctAnswer: "c",
+    timePopUp: 96
+  },
+  {
+    question: "How should plating be done?",
+    a: "Make it colorful and attractive",
+    b: "Stack all ingredients randomly",
+    c: "Serve in a separate bowl only",
+    d: "Blend all ingredients together",
+    aDescription: "Correct! Visual appeal is a key part of the dining experience.",
+    bDescription: "Random stacking looks messy.",
+    cDescription: "Plating can be done on plates or bowls.",
+    dDescription: "Blending turns a salad into a smoothie!",
+    correctAnswer: "a",
+    timePopUp: 110
+  },
+  {
+    question: "Why is it important to arrange salad ingredients properly according to color, shape, texture, and flavor?",
+    a: "To make the salad heavier",
+    b: "To maintain balance and enhance the appearance; the right combination makes it more visually appealing and tasty",
+    c: "To make it cook faster",
+    d: "To reduce the cost of ingredients",
+    aDescription: "Arrangement doesn't change the weight.",
+    bDescription: "Correct! We eat with our eyes first; balance is key.",
+    cDescription: "Arrangement happens after cooking.",
+    dDescription: "The cost remains the same regardless of placement.",
     correctAnswer: "b",
-    timePopUp: 90
+    timePopUp: 119
   },
   {
-    question: "What is done to some fruits to prevent browning in fruit salads?",
-    a: "Freezing them",
-    b: "Cooking them lightly",
-    c: "Dipping them in acidic liquids",
-    d: "Adding sugar immediately",
-    aDescription: "Freezing is not used to prevent browning during preparation.",
-    bDescription: "Cooking fruits is not appropriate for fresh fruit salads.",
-    cDescription: "Correct! Acidic liquids help prevent fruits from browning.",
-    dDescription: "Sugar does not prevent enzymatic browning.",
-    correctAnswer: "c",
-    timePopUp: 90
-  },
-  {
-    question: "Why should vegetables be prepared before fruits in salad preparation?",
-    a: "Vegetables spoil faster",
-    b: "Fruits are harder to cut",
-    c: "To avoid flavor transfer",
-    d: "To improve presentation",
-    aDescription: "Vegetables do not spoil faster than fruits in this context.",
-    bDescription: "Difficulty of cutting is not the reason.",
-    cDescription: "Correct! Preparing vegetables first prevents flavor transfer to fruits.",
-    dDescription: "Presentation is improved, but flavor transfer is the main reason.",
-    correctAnswer: "c",
-    timePopUp: 90
-  },
-  {
-    question: "Which fruit should NOT be used raw in gelatin salads?",
-    a: "Apples",
-    b: "Grapes",
-    c: "Raw pineapple and papaya",
-    d: "Oranges",
-    aDescription: "Apples can be used safely in gelatin salads.",
-    bDescription: "Grapes do not affect gelatin setting.",
-    cDescription: "Correct! Raw pineapple and papaya prevent gelatin from setting.",
-    dDescription: "Oranges are safe for gelatin salads.",
-    correctAnswer: "c",
-    timePopUp: 90
-  },
-  {
-    question: "Which factor is MOST important in making a salad visually appealing?",
-    a: "Large portion size",
-    b: "Balance of color, texture, and shape",
-    c: "Heavy dressing",
-    d: "Serving at room temperature",
-    aDescription: "Portion size does not determine visual appeal.",
-    bDescription: "Correct! Balance in color, texture, and shape enhances salad appearance.",
-    cDescription: "Too much dressing can ruin appearance.",
-    dDescription: "Salads are best served cold, not for appearance reasons.",
+    question: "What is the main goal of following proper guidelines when making salad?",
+    a: "To make the salad spicy",
+    b: "To create a salad that is clean, safe to eat, tasty, and visually appealing",
+    c: "To reduce the number of ingredients",
+    d: "To make the salad heavier",
+    aDescription: "Spiciness is a flavor choice, not a general goal.",
+    bDescription: "Correct! The ultimate goal is a safe, high-quality, and delicious dish.",
+    cDescription: "Guidelines don't dictate the count of ingredients.",
+    dDescription: "Heaviness is not a quality standard.",
     correctAnswer: "b",
-    timePopUp: 90
-  },
-  {
-    question: "When should salad dressings be added to prevent wilting?",
-    a: "During preparation",
-    b: "Several hours before serving",
-    c: "Just before serving",
-    d: "After refrigeration",
-    aDescription: "Adding dressing too early causes wilting.",
-    bDescription: "Several hours is too long before serving.",
-    cDescription: "Correct! Dressings should be added just before serving.",
-    dDescription: "Refrigeration alone does not prevent wilting.",
-    correctAnswer: "c",
-    timePopUp: 90
-  },
-  {
-    question: "Which practice ensures proper hygiene in salad preparation?",
-    a: "Using the same utensils repeatedly",
-    b: "Washing fruits and vegetables with running water",
-    c: "Preparing food without washing hands",
-    d: "Ignoring damaged parts of produce",
-    aDescription: "Using the same utensils can cause contamination.",
-    bDescription: "Correct! Washing produce thoroughly with clean running water ensures safety.",
-    cDescription: "Handwashing is essential in food preparation.",
-    dDescription: "Damaged parts should always be removed.",
-    correctAnswer: "b",
-    timePopUp: 90
+    timePopUp: 128
   }
 ];
-
 
 const VideoQuizSystem: React.FC = () => {
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
@@ -329,7 +328,7 @@ const VideoQuizSystem: React.FC = () => {
               <div className="relative aspect-video bg-gray-100">
                 <video
                   ref={videoRef}
-                  src="image/video/mods4_video.mp4"
+                  src="/image/video/MODULE 4_ VIDEO .mp4"
                   className="w-full h-full object-contain"
                   muted={isMuted}
                   onTimeUpdate={handleTimeUpdate}

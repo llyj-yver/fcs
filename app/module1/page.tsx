@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
-import { ChevronLeft, ChevronRight, Home, BookOpen, Clock, Volume2, VolumeX, RotateCcw } from "lucide-react";
+import { ChevronLeft, ChevronRight, Home, BookOpen, Clock, Volume2, VolumeX, RotateCcw, Play, Pause } from "lucide-react";
 import { useModules } from "../components/ModuleContext";
 import Image from "next/image";
 
@@ -10,6 +10,7 @@ const salads = [
     type: "Appetizer Salad",
     description: "Light and refreshing salads served at the beginning of a meal to stimulate the appetite. Usually small portions with crisp greens and a light vinaigrette.",
     image: "/image/Apetizercover.jpg",
+    audioPath: "/image/audio/Appetizer salad.aac",
     lectureNote: "Appetizer salads are crucial for setting the tone of a meal. They should be light enough to stimulate appetite without filling up your guests. Focus on crisp, fresh ingredients with bright, acidic dressings. Remember: presentation matters most in appetizer salads as they create the first impression.",
     flashcard: {
       front: "What is the main purpose of an Appetizer Salad?",
@@ -26,6 +27,7 @@ const salads = [
     type: "Side Salad",
     description: "Accompanies the main course and complements the flavors of the entrée. Often features seasonal vegetables and simple dressings.",
     image: "/image/Sidesaladcover.png",
+    audioPath: "/image/audio/Side salad.aac",
     lectureNote: "Side salads serve as a complementary dish to the main course. The key is balance - they should enhance, not overpower, the entrée. Consider the flavors and textures of your main dish when selecting ingredients. A simple vinaigrette often works best to keep the focus on the main course.",
     flashcard: {
       front: "How should a Side Salad relate to the main course?",
@@ -42,6 +44,7 @@ const salads = [
     type: "Main Course Salad",
     description: "Substantial salads with protein like chicken, fish, or beans that serve as the primary dish. Nutritionally balanced and filling.",
     image: "/image/maincoursecover.png",
+    audioPath: "/image/audio/main course salad.aac",
     lectureNote: "Main course salads must be nutritionally complete and satisfying. Include quality protein sources, complex carbohydrates, and healthy fats. These salads should be substantial enough to be the centerpiece of the meal. Pay attention to portion sizes and nutritional balance throughout.",
     flashcard: {
       front: "What makes a Main Course Salad nutritionally complete?",
@@ -58,6 +61,7 @@ const salads = [
     type: "Dessert Salad",
     description: "Sweet salads made with fruits, nuts, and creamy dressings. Often served at the end of a meal or as a refreshing treat.",
     image: "/image/DessertSaladcover.png",
+    audioPath: "/image/audio/DESSERT SALADS.aac",
     lectureNote: "Dessert salads offer a lighter alternative to traditional desserts. They combine fresh or preserved fruits with sweet, creamy dressings. Popular at gatherings and potlucks, these salads provide a refreshing end to a meal while still satisfying the sweet tooth.",
     flashcard: {
       front: "What role does a Dessert Salad play in a meal?",
@@ -74,6 +78,7 @@ const salads = [
     type: "Separate Course (Dessert) Salad",
     description: "Sweet salads served as a separate course or dessert, made with fruits, nuts, gelatin, or sweetened dressings.",
     image: "/image/DessertSaladcover.png",
+    audioPath: "/image/audio/Separate course (dessert) salad.aac",
     lectureNote: "Dessert salads are served at the end of a meal as a lighter alternative to traditional desserts. They often use fruits, sweet dressings, whipped cream, or gelatin and should be refreshing rather than heavy.",
     flashcard: {
       front: "When is a dessert salad served?",
@@ -90,6 +95,7 @@ const salads = [
     type: "Accompaniment Salad",
     description: "Salads served alongside the main course to complement flavors and add freshness to the meal.",
     image: "/image/accompanimentcover.png",
+    audioPath: "/image/audio/accompaniment salad.aac",
     lectureNote: "Accompaniment salads balance rich main dishes. They are usually simple, lightly dressed, and should not overpower the main course.",
     flashcard: {
       front: "What is the purpose of an accompaniment salad?",
@@ -106,6 +112,7 @@ const salads = [
     type: "Green Salads",
     description: "Salads made primarily from leafy greens such as lettuce, spinach, or arugula, usually tossed with dressing.",
     image: "/image/greensaladcover.png",
+    audioPath: "/image/audio/Green Salads.aac",
     lectureNote: "Green salads are the most common type of salad. Freshness, crispness, and proper drying of greens are essential for quality.",
     flashcard: {
       front: "What is the main ingredient of green salads?",
@@ -113,7 +120,7 @@ const salads = [
     },
     examples: [
       { name: "Caesar Salad", image: "/image/examples/caesar.png" },
-      { name: "Garden Salad", image: "/image/examples/garden.jpg" }
+      { name: "Garden Salad", image: "/image/examples/garden.png" }
     ],
     keyPoints: ["Leafy greens", "Fresh ingredients", "Light dressing", "Crisp texture"]
   },
@@ -122,6 +129,7 @@ const salads = [
     type: "Vegetable, Grain, Legume & Pasta Salads",
     description: "Hearty salads made with vegetables, grains, legumes, or pasta, often served chilled or at room temperature.",
     image: "/image/pastasaladcover.png",
+    audioPath: "/image/audio/Vegetable grain.aac",
     lectureNote: "These salads are filling and versatile, often used for buffets or packed meals. Proper seasoning and cooling improve flavor.",
     flashcard: {
       front: "Why are pasta and grain salads considered hearty?",
@@ -138,6 +146,7 @@ const salads = [
     type: "Bound Salads",
     description: "Salads held together with a thick dressing such as mayonnaise.",
     image: "/image/boundsaladcover.png",
+    audioPath: "/image/audio/Bound Salad.aac",
     lectureNote: "Bound salads use creamy dressings that coat ingredients evenly. Proper chilling improves texture and flavor.",
     flashcard: {
       front: "What makes a salad a bound salad?",
@@ -154,6 +163,7 @@ const salads = [
     type: "Fruit Salads",
     description: "Salads made primarily from fresh or preserved fruits, served sweet or lightly dressed.",
     image: "/image/fruitsaladcover.png",
+    audioPath: "/image/audio/FRUIT SALADS.aac",
     lectureNote: "Fruit salads emphasize freshness and natural sweetness. Prevent browning by using citrus juice.",
     flashcard: {
       front: "What is the main ingredient in fruit salads?",
@@ -170,6 +180,7 @@ const salads = [
     type: "Composed Salads",
     description: "Salads where ingredients are arranged neatly rather than mixed.",
     image: "/image/composedsaladcover.png",
+    audioPath: "/image/audio/Composed salad.aac",
     lectureNote: "Composed salads focus on presentation. Ingredients are arranged artistically and dressed lightly or separately.",
     flashcard: {
       front: "How are composed salads prepared?",
@@ -186,6 +197,7 @@ const salads = [
     type: "Gelatin Salads",
     description: "Salads made with gelatin combined with fruits, vegetables, or meats.",
     image: "/image/gelatin_cover.png",
+    audioPath: "/image/audio/gelatin salads.aac",
     lectureNote: "Gelatin salads are popular for special occasions. Proper setting time and temperature are important.",
     flashcard: {
       front: "What ingredient gives gelatin salads their structure?",
@@ -202,51 +214,59 @@ const salads = [
 export default function Module1() {
   const { modules, updateModuleCompletion } = useModules();
   const [current, setCurrent] = useState(0);
-  const [isSpeaking, setIsSpeaking] = useState(false);
-  const [autoSpeak, setAutoSpeak] = useState(true);
-  const [speechRate, setSpeechRate] = useState(0.9);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [autoPlay, setAutoPlay] = useState(true);
+  const [playbackRate, setPlaybackRate] = useState(1.0);
   const [isFlipped, setIsFlipped] = useState(false);
   const [showCompletion, setShowCompletion] = useState(false);
-  const utteranceRef = useRef<SpeechSynthesisUtterance | null>(null);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
 
   const isModuleCompleted = modules.find(m => m.id === 1)?.completed || false;
 
-  const speak = (text: string) => {
-    window.speechSynthesis.cancel();
-
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.rate = speechRate;
-    utterance.pitch = 1;
-    utterance.volume = 1;
-
-    utterance.onstart = () => setIsSpeaking(true);
-    utterance.onend = () => setIsSpeaking(false);
-    utterance.onerror = () => setIsSpeaking(false);
-
-    utteranceRef.current = utterance;
-    window.speechSynthesis.speak(utterance);
+  const playAudio = () => {
+    if (audioRef.current) {
+      audioRef.current.play();
+      setIsPlaying(true);
+    }
   };
 
-  const stopSpeaking = () => {
-    window.speechSynthesis.cancel();
-    setIsSpeaking(false);
+  const pauseAudio = () => {
+    if (audioRef.current) {
+      audioRef.current.pause();
+      setIsPlaying(false);
+    }
   };
 
-  const toggleAutoSpeak = () => {
-    setAutoSpeak(!autoSpeak);
-    if (isSpeaking) {
-      stopSpeaking();
+  const stopAudio = () => {
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current.currentTime = 0;
+      setIsPlaying(false);
+    }
+  };
+
+  const toggleAutoPlay = () => {
+    setAutoPlay(!autoPlay);
+    if (isPlaying) {
+      stopAudio();
     }
   };
 
   useEffect(() => {
-    if (autoSpeak) {
-      speak(salads[current].lectureNote);
+    if (audioRef.current) {
+      audioRef.current.playbackRate = playbackRate;
     }
-    return () => {
-      window.speechSynthesis.cancel();
-    };
-  }, [current, autoSpeak, speechRate]);
+  }, [playbackRate]);
+
+  useEffect(() => {
+    stopAudio();
+    if (autoPlay && audioRef.current) {
+      audioRef.current.load();
+      audioRef.current.play().catch(() => {
+        setIsPlaying(false);
+      });
+    }
+  }, [current, autoPlay]);
 
   useEffect(() => {
     setIsFlipped(false);
@@ -255,7 +275,6 @@ export default function Module1() {
   useEffect(() => {
     if (current === salads.length - 1) {
       setShowCompletion(true);
-
       if (!isModuleCompleted) {
         setTimeout(() => {
           updateModuleCompletion(1, true);
@@ -270,6 +289,15 @@ export default function Module1() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 via-lime-50 to-emerald-50 text-gray-800 p-6">
+      {/* Hidden Audio Element */}
+      <audio
+        ref={audioRef}
+        src={salads[current].audioPath}
+        onPlay={() => setIsPlaying(true)}
+        onPause={() => setIsPlaying(false)}
+        onEnded={() => setIsPlaying(false)}
+      />
+
       {/* Top Navigation Bar */}
       <div className="max-w-7xl mx-auto mb-6">
         <div className="flex items-center justify-between">
@@ -301,7 +329,7 @@ export default function Module1() {
                 Module 1
               </span>
               <span className="flex items-center gap-1">
-                <Clock className="w-4 h-4" />• 4 Lessons
+                <Clock className="w-4 h-4" />• 12 Lessons
               </span>
             </div>
           </div>
@@ -383,7 +411,10 @@ export default function Module1() {
                   </p>
                   <div className="flex gap-3">
                     <button
-                      onClick={() => window.location.href = "/navigation"}
+                      onClick={() => {
+                        updateModuleCompletion(1, true);
+                        window.location.href = "/navigation";
+                      }}
                       className="px-6 py-3 bg-gradient-to-r from-lime-500 to-green-600 text-white rounded-lg hover:from-lime-600 hover:to-green-700 transition-colors flex items-center gap-2 shadow-md"
                     >
                       <Home className="w-5 h-5" />
@@ -482,7 +513,7 @@ export default function Module1() {
 
         {/* Right Section - Sidebar */}
         <div className="space-y-6">
-          {/* Lecture Notes */}
+          {/* Lecture Notes with Audio Controls */}
           <div className="bg-white rounded-lg p-6 border border-green-200 shadow-lg">
             <div className="flex items-center justify-between mb-4">
               <div className="flex items-center gap-2 text-green-700">
@@ -491,19 +522,28 @@ export default function Module1() {
               </div>
               <div className="flex items-center gap-2">
                 <button
-                  onClick={toggleAutoSpeak}
-                  className={`p-2 rounded-lg transition-colors ${autoSpeak ? "bg-gradient-to-r from-lime-500 to-green-600 text-white" : "bg-green-100 text-green-700"
+                  onClick={toggleAutoPlay}
+                  className={`p-2 rounded-lg transition-colors ${autoPlay ? "bg-gradient-to-r from-lime-500 to-green-600 text-white" : "bg-green-100 text-green-700"
                     } hover:bg-green-500`}
-                  title={autoSpeak ? "Auto-speak enabled" : "Auto-speak disabled"}
+                  title={autoPlay ? "Auto-play enabled" : "Auto-play disabled"}
                 >
-                  {autoSpeak ? <Volume2 className="w-5 h-5" /> : <VolumeX className="w-5 h-5" />}
+                  {autoPlay ? <Volume2 className="w-5 h-5" /> : <VolumeX className="w-5 h-5" />}
                 </button>
-                {isSpeaking && (
+                {isPlaying ? (
                   <button
-                    onClick={stopSpeaking}
-                    className="px-3 py-2 bg-red-500 text-white text-sm rounded-lg hover:bg-red-600 transition-colors shadow-sm"
+                    onClick={pauseAudio}
+                    className="p-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors shadow-sm"
+                    title="Pause audio"
                   >
-                    Stop
+                    <Pause className="w-5 h-5" />
+                  </button>
+                ) : (
+                  <button
+                    onClick={playAudio}
+                    className="p-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition-colors shadow-sm"
+                    title="Play audio"
+                  >
+                    <Play className="w-5 h-5" />
                   </button>
                 )}
               </div>
@@ -511,16 +551,16 @@ export default function Module1() {
 
             <div className="mb-4">
               <div className="flex items-center justify-between mb-2">
-                <label className="text-sm text-gray-600">Speech Speed</label>
-                <span className="text-sm text-green-700">{speechRate.toFixed(1)}x</span>
+                <label className="text-sm text-gray-600">Playback Speed</label>
+                <span className="text-sm text-green-700">{playbackRate.toFixed(1)}x</span>
               </div>
               <input
                 type="range"
                 min="0.5"
                 max="2"
                 step="0.1"
-                value={speechRate}
-                onChange={(e) => setSpeechRate(parseFloat(e.target.value))}
+                value={playbackRate}
+                onChange={(e) => setPlaybackRate(parseFloat(e.target.value))}
                 className="w-full h-2 bg-green-200 rounded-lg appearance-none cursor-pointer accent-green-600"
               />
               <div className="flex justify-between text-xs text-gray-500 mt-1">
@@ -549,7 +589,7 @@ export default function Module1() {
 
           {/* Navigation Dots */}
           <div className="bg-white rounded-lg p-6 border border-green-200 shadow-lg">
-            <div className="flex gap-2 justify-center">
+            <div className="flex gap-2 justify-center flex-wrap">
               {salads.map((_, idx) => (
                 <button
                   key={idx}
