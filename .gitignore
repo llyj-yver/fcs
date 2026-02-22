@@ -11,7 +11,7 @@
 !.yarn/versions
 
 # Ignore images and videos
-public/image/
+public/image/video
 
 
 # testing
